@@ -11,7 +11,7 @@ const passportSetup = require('./config/passport');
 
 
 // path to load config
-dotenv.config({ path: './config/config.env' });
+dotenv.config({ path: './config.env' });
 
 // passport config
 passportSetup(passport);
