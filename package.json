@@ -1,0 +1,33 @@
+{
+  "name": "login-authentication",
+  "version": "1.0.0",
+  "description": "A node js login authentication",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwabena95/login-authentication.git"
+  },
+  "author": "Ebenezer Kankam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kwabena95/login-authentication/issues"
+  },
+  "homepage": "https://github.com/kwabena95/login-authentication#readme",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.4.1",
+    "ejs": "^3.1.6",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.12.3",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  }
+}
