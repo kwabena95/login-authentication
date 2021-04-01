@@ -5,20 +5,22 @@ const passport = require('passport');
 // @destination homePage
 // route  GET/
 router.get('/', (req, res) => {
-    res.render('home');
+    res.render('home', { user: req.user });
 });
 
 // @destination loginpage
 // route GET/login
 router.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login', { user: req.user });
 });
 
 // @destination logout page
 // route GET/logout
 router.get('/logout', (req, res) => {
     // handle with passport
-    res.send('Logging out')
+    req.logOut();
+    // if user log out, redirect them to the homepage
+    res.redirect('/');
 });
 
 

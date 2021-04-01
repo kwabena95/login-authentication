@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <title>Homepage</title>
     <style>
         body {
@@ -45,6 +43,17 @@
             padding: 0 10px;
             color: #333;
         }
+
+        main img {
+            width: 40px;
+            margin-right: 10px;
+            position: relative;
+            top: 12px;
+        }
+
+        main p {
+            display: inline-block;
+        }
     </style>
 </head>
 
@@ -58,15 +67,14 @@
                     <% } %>
                         <li><a href="/">Homepage</a></li>
                         <li><a href="/profile">Profile</a></li>
-
         </ul>
     </nav>
     <header>
-        <h1>OAuth Login</h1>
-        <h2>Homepage</h2>
+        <h1>Welcome to your profile, <%= user.firstName %>
+        </h1>
     </header>
     <main>
-        <p>Using passport to login user</p>
+        <p>Additional information about jason</p>
     </main>
 </body>
 
