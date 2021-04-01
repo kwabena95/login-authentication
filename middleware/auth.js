@@ -1,17 +1,12 @@
-// check to see if user is logged in
-const isLoggedIn = (req, res, next) => {
-    if (req.isAuthenticated()) return next();
-    res.redirect('/login');
-}
-
-const notLoggedIn = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        return res.redirect('/home');
+// middleware to check if user is logged in
+const authCheck = (req, res, next) => {
+    if (!req.user) {
+        // if user is not logged in
+        res.redirect('/auth/login');
+    } else {
+        // if logged in
+        next();
     }
-    next();
 }
 
-module.exports = {
-    isLoggedIn,
-    notLoggedIn
-}
+module.exports = authCheck;

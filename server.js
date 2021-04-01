@@ -2,11 +2,15 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
+const mongoose = require('mongoose');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth-routes');
+const profileRoutes = require('./routes/profile-route');
 const passportSetup = require('./config/passport');
+
 
 
 
@@ -29,7 +33,8 @@ app.set('view engine', 'ejs');
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
 // body parser
@@ -38,10 +43,11 @@ app.use(express.json());
 
 // passport
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 
 // router
 app.use('/', authRoutes);
 app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);
 
 app.listen(PORT, console.log(`Running on port ${PORT}`));
