@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const passport = require('passport');
+
 
 // @destination homePage
 // route  GET/
@@ -22,9 +24,12 @@ router.get('/logout', (req, res) => {
 
 // @destination google login page
 // router  GET/google
-router.get('/google', (req, res) => {
-    // handle with passport
-    res.send('Loging in with Google');
-});
+router.get('/google', passport.authenticate('google', {
+    scope: ['profile']
+}));
 
+//callback route for google to redirect to
+router.get('/google/callback', passport.authenticate('google'), (req, res) => {
+    res.send('You have reach a callbak uri')
+})
 module.exports = router;

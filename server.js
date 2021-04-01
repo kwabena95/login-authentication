@@ -6,12 +6,15 @@ const session = require('express-session');
 const passport = require('passport');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth-routes');
-
+const passportSetup = require('./config/passport');
 
 
 
 // path to load config
 dotenv.config({ path: './config/config.env' });
+
+// passport config
+passportSetup(passport);
 
 // connecting to database
 connectDB();
@@ -35,7 +38,7 @@ app.use(express.json());
 
 // passport
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 // router
 app.use('/', authRoutes);
